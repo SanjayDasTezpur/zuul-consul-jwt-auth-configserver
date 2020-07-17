@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: AuthService
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+      host: localhost
+      #host: ubuntu-vm-1
+      port: 8500
+    config:
+      server:
+        bootstrap: true
+      uri: http://localhost:${config.port:8888}
+      fail-fast: true

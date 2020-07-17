@@ -1,0 +1,43 @@
+ribbon:
+  ReadTimeout: 200000
+  ConnectTimeout: 200000
+  ServerListRefreshInterval: 1000
+  eureka:
+    enabled: false
+
+zuul:
+  #ignoredServices: '*'
+  #ignoreLocalService: false
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+  routes:
+    AuthService:
+      path: /login/**
+      serviceId: AuthService
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+    DummyServic:
+      path: /ds/**
+      serviceId: DummyServic
+      sensitiveHeaders: Cookie,Set-Cookie
+server:
+  port: 8080
+
+
+endpoints:
+  health:
+    sensitive: false
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+management:
+  security:
+    enabled: false
+
+shuaicj:
+  security:
+    jwt:
+      secret: otherpeopledontknowit
