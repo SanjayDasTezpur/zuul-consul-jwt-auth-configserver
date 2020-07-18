@@ -2,11 +2,11 @@
 
 This is a project based on java, spring, spring boot, spring cloud, spring security, Netflix OSS etc, to demonstarate a pure microservice architecture.
 Project Contains 
- Markup : * Consul
-          * ApiGateway
-          * AuthService
-          * ConfigServer
-          * Some Dummy Service.   
+ - Consul
+ - ApiGateway
+ - AuthService
+ - ConfigServer
+ - Some Dummy Service.   
 
 
 ## Installation
