@@ -1,4 +1,4 @@
-# zuul-consul-jwt-auth-configserver-gradle
+# zuul-consul-jwt-auth-configserver-hystrix-feign-gradle
 
 This is a project based on java, spring, spring boot, spring cloud, spring security, Netflix OSS etc, to demonstarate a pure microservice architecture.
 Project Contains 
