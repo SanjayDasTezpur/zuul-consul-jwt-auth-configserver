@@ -8,7 +8,13 @@ Project Contains
  - ConfigServer
  - Some Dummy Service.   
 
-
+## Usage
+ - zuul is for proxy/ApiGateway
+ - consul is for service registry
+ - hystrix if for circuit breaking (fallback mechanism)
+ - feign is for inter service communication using rest client.
+ - gradle - a build & automation tool
+ 
 ## Installation
 
 Use any Java IDE, import each project in IDE and run (see command bellow)  for each project, sequnce will Run Consul agent , and then ConfigurationService -> AuthService -> ApiGateWay -> OtherServices .
