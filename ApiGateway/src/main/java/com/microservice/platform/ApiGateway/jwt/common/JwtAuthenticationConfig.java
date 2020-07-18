@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Value;
 @ToString
 public class JwtAuthenticationConfig {
 
-    @Value("${shuaicj.security.jwt.url:/login}")
+    @Value("${micro.security.jwt.url:/login}")
     private String url;
 
-    @Value("${shuaicj.security.jwt.header:Authorization}")
+    @Value("${micro.security.jwt.header:Authorization}")
     private String header;
 
-    @Value("${shuaicj.security.jwt.prefix:Bearer}")
+    @Value("${micro.security.jwt.prefix:Bearer}")
     private String prefix;
 
-    @Value("${shuaicj.security.jwt.expiration:#{24*60*60}}")
+    @Value("${micro.security.jwt.expiration:#{24*60*60}}")
     private int expiration; // default 24 hours
 
-    @Value("${shuaicj.security.jwt.secret}")
+    @Value("${micro.security.jwt.secret}")
     private String secret;
 }

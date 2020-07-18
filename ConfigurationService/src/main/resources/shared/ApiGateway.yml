@@ -37,7 +37,7 @@ management:
   security:
     enabled: false
 
-shuaicj:
+micro:
   security:
     jwt:
       secret: otherpeopledontknowit

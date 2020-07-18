@@ -19,7 +19,7 @@ security:
   basic:
     enable: false
 
-shuaicj:
+micro:
   security:
     jwt:
       secret: otherpeopledontknowit
