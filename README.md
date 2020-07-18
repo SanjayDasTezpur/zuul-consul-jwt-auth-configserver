@@ -11,13 +11,13 @@ Project Contains
 
 ## Installation
 
-Use any Java IDE, import 
+Use any Java IDE, import each project in IDE and run (see command bellow)  for each project, sequnce will Run Consul agent , and then ConfigurationService -> AuthService -> ApiGateWay -> OtherServices .
 
 ```bash
-pip install foobar
+./gradlew bootrun
 ```
 
-## Usage
+## Brief Explanation
 
 ```python
 import foobar
