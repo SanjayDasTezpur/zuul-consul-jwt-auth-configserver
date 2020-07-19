@@ -8,3 +8,7 @@ consul agent -data-dir=/consul/data -config-dir=/consul/config -advertise=<IP_OF
 
 ## To run clsuter server, which can join another consul server 
 consul agent -data-dir=/consul/data -config-dir=/consul/config -server -ui -advertise=<IP_OF_MACHINE> -client=0.0.0.0 -node=<HOST_NAME> -bind=<IP_OF_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3 -retry-join=<ANOTHER_CONSUL_SERVER:PORT>
+
+
+# Recommended  Setup
+Production should have a cluster of more than one server [internally by Gossip protocol one will be leader and another willl be follower], Each machine/vm (where  microservice is running) should have an consul agent connected to one server from cluster.
