@@ -4,4 +4,7 @@
  - [download consul](https://www.consul.io/downloads)
 
 ## To run agent locally, which should join consul server 
-consul agent -data-dir=/consul/data -config-dir=/consul/config -advertise=<IP_OF_AGENT_MACHINE> -retry-join=<CONSUL_SERVER:PORT> -client=0.0.0.0 -node=inlubt0081.iind.intel.com -bind=<IP_OF_AGENT_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3
+consul agent -data-dir=/consul/data -config-dir=/consul/config -advertise=<IP_OF_MACHINE> -retry-join=<CONSUL_SERVER:PORT> -client=0.0.0.0 -node=<HOST_NAME> -bind=<IP_OF_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3
+
+## To run clsuter server, which can join another consul server 
+consul agent -data-dir=/consul/data -config-dir=/consul/config -server -ui -advertise=<IP_OF_MACHINE> -client=0.0.0.0 -node=<HOST_NAME> -bind=<IP_OF_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3 -retry-join=<ANOTHER_CONSUL_SERVER:PORT>
