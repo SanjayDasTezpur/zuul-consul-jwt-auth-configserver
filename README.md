@@ -1,6 +1,6 @@
 # zuul-consul-jwt-auth-configserver-hystrix-feign-gradle
 
-This is a project based on java, spring, spring boot, spring cloud, spring security, Netflix OSS etc, to demonstarate a pure microservice architecture.
+This is a project based on java, spring, spring boot, spring cloud, spring security, Netflix OSS etc, to demonstarate a pure microservice architecture (Distributed Architecture).
 Project Contains 
  - Consul
  - ApiGateway
@@ -13,6 +13,7 @@ Project Contains
  - consul is for service registry
  - hystrix if for circuit breaking (fallback mechanism)
  - feign is for inter service communication using rest client.
+ - Sleuth for distributed tracing (tracing of request thought out the production)
  - gradle - a build & automation tool
  
 ## Installation
