@@ -10,6 +10,28 @@ spring:
       port: 8500
   profiles:
     active: native
+
 security:
   basic:
     enable: false
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+      cors:
+        allowed-origins: true
+
+
+feign:
+  hystrix:
+    enabled: true

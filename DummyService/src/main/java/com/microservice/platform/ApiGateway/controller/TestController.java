@@ -2,10 +2,12 @@ package com.microservice.platform.ApiGateway.controller;
 
 import com.microservice.platform.ApiGateway.services.TestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class TestController {
@@ -19,6 +21,7 @@ public class TestController {
 
     @GetMapping("/api/hello")
     public String test1() {
+        log.info("/api/hello called");
         return "<h1> Hello world! God Is Great, I am a valid user and resided behind APIGateway </h1>";
     }
 
@@ -34,6 +37,7 @@ public class TestController {
 
     @GetMapping("/open/hello")
     public String test3() {
+        log.info("logging...");
         return "<h1> Hello world! God Is Great, I am a random guy and not resided behind APIGateway </h1>";
     }
 

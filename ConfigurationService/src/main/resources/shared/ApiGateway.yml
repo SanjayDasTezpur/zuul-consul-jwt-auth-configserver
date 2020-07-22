@@ -17,10 +17,6 @@ zuul:
       serviceId: AuthService
       sensitiveHeaders: Cookie,Set-Cookie
       stripPrefix: false
-    DummyServic:
-      path: /ds/**
-      serviceId: DummyServic
-      sensitiveHeaders: Cookie,Set-Cookie
 server:
   port: 8080
 
@@ -33,11 +29,26 @@ endpoints:
   shutdown:
     enabled: true
 
-management:
-  security:
-    enabled: false
-
 micro:
   security:
     jwt:
       secret: otherpeopledontknowit
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+      cors:
+        allowed-origins: true
+feign:
+  hystrix:
+    enabled: true
