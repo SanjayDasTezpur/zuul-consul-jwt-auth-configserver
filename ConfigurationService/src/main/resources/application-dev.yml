@@ -1,44 +1,8 @@
 spring:
   cloud:
-    consul:
-      discovery:
-        prefer-ip-address: true
-      host: localhost
-      #host: ubuntu-vm-1
-      port: 8500
     config:
       server:
-        git:
-          uri: https://github.com/SanjayDasTezpur/services-all
-          username: SanjayDasTezpur
-
-security:
-  basic:
-    enable: false
-
-management:
-  endpoint:
-    health:
-      enabled: true
-      show-details: always
-  endpoints:
-    jmx:
-      exposure:
-        include: "*"
-    web:
-      exposure:
-        include: "*"
-      base-path: /actuator
-      cors:
-        allowed-origins: true
-
-
-feign:
-  hystrix:
-    enabled: true
-
+        native:
+          search-locations: classpath:/shared
   profiles:
     active: native
-
-server:
-  port: 8078

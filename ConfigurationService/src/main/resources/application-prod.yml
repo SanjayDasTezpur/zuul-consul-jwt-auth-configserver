@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+      host: localhost
+      port: 8500
+    config:
+      server:
+        git:
+          uri: https://github.com/SanjayDasTezpur/config-repo
+          username: SanjayDasTezpur
+          password: ${KEYSTORE_PASSWORD:foobar}
+
+security:
+  basic:
+    enable: false
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+      cors:
+        allowed-origins: true
+feign:
+  hystrix:
+    enabled: true
