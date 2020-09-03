@@ -6,6 +6,10 @@
 ## To run agent locally, which should join consul server 
 consul agent -data-dir=/consul/data -config-dir=/consul/config -advertise=<IP_OF_MACHINE> -retry-join=<CONSUL_SERVER:PORT> -client=0.0.0.0 -node=<HOST_NAME> -bind=<IP_OF_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3
 
+```
+IN DOCKER :-  sudo docker run -d --net=host -e 'CONSUL_LOCAL_CONFIG={"leave_on_terminate": true}' consul agent -bind=0.0.0.0 -advertise=22.22.22.122 -retry-join=34.93.119.100
+```
+
 ## To run clsuter server, which can join another consul server 
 consul agent -data-dir=/consul/data -config-dir=/consul/config -server -ui -advertise=<IP_OF_MACHINE> -client=0.0.0.0 -node=<HOST_NAME> -bind=<IP_OF_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3 -retry-join=<ANOTHER_CONSUL_SERVER:PORT>
 ```
