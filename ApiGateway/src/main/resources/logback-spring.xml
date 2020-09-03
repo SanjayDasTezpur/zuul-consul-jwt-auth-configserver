@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="LOGSTASH_HOST" source="logstash.host" defaultValue="localhost:5000"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${LOGSTASH_HOST}</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+    <appender name="consoleOut" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="rolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/home/logs</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${logfile}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <maxFileSize>10</maxFileSize>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>10</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd-MMM-yy HH:mm:ss.SSS} %-5level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="stash"/>
+    </root>
+    <logger name="com" level="FATAL">
+        <appender-ref ref="consoleOut"/>
+    </logger>
+    <logger name="com.microservice.platform" level="FATAL">
+        <appender-ref ref="rolling"/>
+    </logger>
+</configuration>

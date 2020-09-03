@@ -1,3 +1,5 @@
+my:
+  configServer: "34.93.119.163"
 spring:
   application:
     name: ApiGateway
@@ -11,10 +13,8 @@ spring:
     config:
       server:
         bootstrap: true
-      uri: http://localhost:${config.port:8888}
+      uri: http://${my.configServer:localhost}:${config.port:8888}
       fail-fast: true
-  profiles:
-    active: native
 security:
   basic:
     enable: false
