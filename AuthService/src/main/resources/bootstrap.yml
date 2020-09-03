@@ -1,3 +1,5 @@
+my:
+  configServer: "34.93.119.163"
 spring:
   application:
     name: AuthService
@@ -5,11 +7,11 @@ spring:
     consul:
       discovery:
         prefer-ip-address: true
-      host: 34.93.119.163
+      host: localhost
       #host: ubuntu-vm-1
       port: 8500
     config:
       server:
         bootstrap: true
-      uri: http://34.93.119.163:${config.port:8888}
+      uri: http://${my.configServer:localhost}:${config.port:8888}
       fail-fast: true
