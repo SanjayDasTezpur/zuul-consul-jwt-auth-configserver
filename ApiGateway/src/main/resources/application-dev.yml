@@ -1,2 +1,17 @@
 logstash:
   host: "localhost:5000"
+
+spring:
+  cloud:
+    bus:
+      enabled: false
+    config:
+      enabled: false
+
+  config:
+    server:
+      bootstrap: false
+
+    consul:
+      discovery:
+        enabled: false

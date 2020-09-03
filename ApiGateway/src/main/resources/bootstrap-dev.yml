@@ -1,7 +1,14 @@
 spring:
   cloud:
+    bus:
+      enabled: false
     config:
       enabled: false
 
-  application:
-    name: ApiGateway
+  config:
+    server:
+      bootstrap: false
+
+    consul:
+      discovery:
+        enabled: false
