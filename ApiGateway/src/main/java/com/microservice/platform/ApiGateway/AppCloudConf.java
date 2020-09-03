@@ -8,6 +8,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableHystrix
 @EnableHystrixDashboard
+@Profile(value = "prod")
 public class AppCloudConf {
 
     @Bean
