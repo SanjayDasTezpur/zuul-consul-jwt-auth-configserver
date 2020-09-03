@@ -4,13 +4,13 @@ spring:
       discovery:
         prefer-ip-address: true
       host: localhost
+      #host: ubuntu-vm-1
       port: 8500
     config:
       server:
         git:
-          uri: https://github.com/SanjayDasTezpur/config-repo
+          uri: https://github.com/SanjayDasTezpur/services-all
           username: SanjayDasTezpur
-          password: ${KEYSTORE_PASSWORD:foobar}
 
 security:
   basic:
@@ -37,5 +37,8 @@ feign:
   hystrix:
     enabled: true
 
+  profiles:
+    active: native
+
 server:
-  port: 8888
+  port: 8078
