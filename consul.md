@@ -8,6 +8,8 @@ consul agent -data-dir=/consul/data -config-dir=/consul/config -advertise=<IP_OF
 
 ## To run clsuter server, which can join another consul server 
 consul agent -data-dir=/consul/data -config-dir=/consul/config -server -ui -advertise=<IP_OF_MACHINE> -client=0.0.0.0 -node=<HOST_NAME> -bind=<IP_OF_MACHINE> -datacenter=<DATA_CENTER> -raft-protocol=3 -retry-join=<ANOTHER_CONSUL_SERVER:PORT>
+IN DOCKER :-  sudo docker run -d --net=host -e 'CONSUL_LOCAL_CONFIG={"skip_leave_on_interrupt": true}' consul agent -server -ui -bind=0.0.0.0 -advertise=34.93.119.163
+ -retry-join=34.93.119.163 -bootstrap-expect=1
 
 
 ## Recommended  Setup
