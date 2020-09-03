@@ -1,0 +1,27 @@
+server:
+  port: 0
+
+feign:
+  hystrix:
+    enabled: true
+
+micro:
+  security:
+    jwt:
+      secret: otherpeopledontknowit
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+      cors:
+        allowed-origins: true
