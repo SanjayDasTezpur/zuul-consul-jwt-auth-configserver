@@ -11,16 +11,21 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguarion extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtAuthenticationConfig config;
+
+    @Autowired
+    DataSource dataSource;
 
     @Bean
     public JwtAuthenticationConfig jwtConfig() {
@@ -33,6 +38,12 @@ public class SecurityConfiguarion extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("admin").password(encoder.encode("admin")).roles("ADMIN", "USER").and()
                 .withUser("sanjay").password(encoder.encode("sanjay")).roles("USER");
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select username as principal,password as credentials, true from users where username = ?")
+                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                .usersByUsernameQuery("select username,password, enabled from users where username=?")
+                .authoritiesByUsernameQuery("select username, role from user_roles where username=?");
+
     }
 
     @Override
@@ -51,7 +62,7 @@ public class SecurityConfiguarion extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtUsernamePasswordAuthenticationFilter(config, authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/",config.getUrl(), "/logout/**", "/health/**", "/actuator/health").permitAll()
+                .antMatchers("/", config.getUrl(), "/logout/**", "/health/**", "/actuator/health").permitAll()
                 .anyRequest().authenticated();
     }
 }

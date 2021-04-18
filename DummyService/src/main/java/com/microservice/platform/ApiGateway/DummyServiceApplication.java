@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class ConfigurationServiceApplication {
+public class DummyServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigurationServiceApplication.class, args);
+        SpringApplication.run(DummyServiceApplication.class, args);
     }
 
 }

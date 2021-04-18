@@ -1,6 +1,6 @@
 spring:
   application:
-    name: DummyServic
+    name: DummyService
   cloud:
     consul:
       discovery:
@@ -13,8 +13,6 @@ spring:
         bootstrap: true
       uri: http://localhost:${config.port:8888}
       fail-fast: true
-  profiles:
-    active: native
 security:
   basic:
     enable: false

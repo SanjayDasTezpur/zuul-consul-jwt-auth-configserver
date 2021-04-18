@@ -32,4 +32,11 @@ public class TestService {
             Thread.currentThread().interrupt();
         }
     }
+
+    public String hugeTask() {
+        __sleep(120);
+        log.info("");
+        return "Done";
+
+    }
 }
